@@ -1,6 +1,7 @@
 # Code Pretraining Models
 
 This repo contains code pretraining models in the CodeBERT series from Microsoft, including four models as of July 2022.
+
 - CodeBERT (EMNLP 2020)
 - GraphCodeBERT (ICLR 2021)
 - UniXcoder (ACL 2022)
@@ -8,7 +9,7 @@ This repo contains code pretraining models in the CodeBERT series from Microsoft
 
 # CodeBERT
 
-This repo provides the code for reproducing the experiments in [CodeBERT: A Pre-Trained Model for Programming and Natural Languages](https://arxiv.org/pdf/2002.08155.pdf). CodeBERT is a pre-trained model for programming language, which is a multi-programming-lingual model pre-trained on NL-PL pairs in 6 programming languages (Python, Java, JavaScript, PHP, Ruby, Go). 
+This repo provides the code for reproducing the experiments in [CodeBERT: A Pre-Trained Model for Programming and Natural Languages](https://arxiv.org/pdf/2002.08155.pdf). CodeBERT is a pre-trained model for programming language, which is a multi-programming-lingual model pre-trained on NL-PL pairs in 6 programming languages (Python, Java, JavaScript, PHP, Ruby, Go).
 
 ### Dependency
 
@@ -16,7 +17,9 @@ This repo provides the code for reproducing the experiments in [CodeBERT: A Pre-
 - pip install transformers
 
 ### Quick Tour
+
 We use huggingface/transformers framework to train the model. You can use our model like the pre-trained Roberta base. Now, We give an example on how to load the model.
+
 ```python
 import torch
 from transformers import RobertaTokenizer, RobertaConfig, RobertaModel
@@ -56,13 +59,12 @@ tensor([[-0.1423,  0.3766,  0.0443,  ..., -0.2513, -0.3099,  0.3183],
        grad_fn=<SelectBackward>)
 ```
 
-
 ### Probing
 
 As stated in the paper, CodeBERT is not suitable for mask prediction task, while CodeBERT (MLM) is suitable for mask prediction task.
 
-
 We give an example on how to use CodeBERT(MLM) for mask prediction task.
+
 ```python
 from transformers import RobertaConfig, RobertaTokenizer, RobertaForMaskedLM, pipeline
 
@@ -76,11 +78,15 @@ outputs = fill_mask(CODE)
 print(outputs)
 
 ```
+
 Results
+
 ```python
 'and', 'or', 'if', 'then', 'AND'
 ```
+
 The detailed outputs are as follows:
+
 ```python
 {'sequence': '<s> if (x is not None) and (x>1)</s>', 'score': 0.6049249172210693, 'token': 8}
 {'sequence': '<s> if (x is not None) or (x>1)</s>', 'score': 0.30680200457572937, 'token': 50}
@@ -93,17 +99,15 @@ The detailed outputs are as follows:
 
 For Code Search and Code Docsmentation Generation tasks, please refer to the [CodeBERT](https://github.com/guoday/CodeBERT/tree/master/CodeBERT) folder.
 
-
-
 # GraphCodeBERT
 
-This repo also provides the code for reproducing the experiments in [GraphCodeBERT: Pre-training Code Representations with Data Flow](https://openreview.net/pdf?id=jLoC4ez43PZ). GraphCodeBERT is a pre-trained model for programming language that considers the inherent structure of code i.e. data flow, which is a multi-programming-lingual model pre-trained on NL-PL pairs in 6 programming languages (Python, Java, JavaScript, PHP, Ruby, Go). 
+This repo also provides the code for reproducing the experiments in [GraphCodeBERT: Pre-training Code Representations with Data Flow](https://openreview.net/pdf?id=jLoC4ez43PZ). GraphCodeBERT is a pre-trained model for programming language that considers the inherent structure of code i.e. data flow, which is a multi-programming-lingual model pre-trained on NL-PL pairs in 6 programming languages (Python, Java, JavaScript, PHP, Ruby, Go).
 
 For downstream tasks like code search, clone detection, code refinement and code translation, please refer to the [GraphCodeBERT](https://github.com/guoday/CodeBERT/tree/master/GraphCodeBERT) folder.
 
 # UniXcoder
 
-This repo will provide the code for reproducing the experiments in [UniXcoder: Unified Cross-Modal Pre-training for Code Representation](https://arxiv.org/pdf/2203.03850.pdf). UniXcoder is a unified cross-modal pre-trained model for programming languages to support both code-related understanding and generation tasks. 
+This repo will provide the code for reproducing the experiments in [UniXcoder: Unified Cross-Modal Pre-training for Code Representation](https://arxiv.org/pdf/2203.03850.pdf). UniXcoder is a unified cross-modal pre-trained model for programming languages to support both code-related understanding and generation tasks.
 
 Please refer to the [UniXcoder](https://github.com/microsoft/CodeBERT/tree/master/UniXcoder) folder for tutorials and downstream tasks.
 
