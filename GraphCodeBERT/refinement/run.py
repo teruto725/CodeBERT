@@ -118,6 +118,7 @@ class Example(object):
         self.source = source
         self.target = target
 
+# ここでファイル読み込みしている
 def read_examples(filename):
     """Read examples from filename."""
     examples=[]
@@ -132,7 +133,7 @@ def read_examples(filename):
                     target=line2,
                         ) 
             )
-
+    print
     return examples
 
 

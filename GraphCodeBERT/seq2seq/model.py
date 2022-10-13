@@ -6,6 +6,10 @@ import torch.nn as nn
 import torch
 from torch.autograd import Variable
 import copy
+
+class Encoder(nn.Module):
+    def __init__(self, hidden_size)
+
 class Seq2Seq(nn.Module):
     """
         Build Seqence-to-Sequence.
@@ -22,7 +26,7 @@ class Seq2Seq(nn.Module):
     """
     def __init__(self, encoder,decoder,config,beam_size=None,max_length=None,sos_id=None,eos_id=None):
         super(Seq2Seq, self).__init__()
-        self.encoder = encoder
+        self.encoder = endocer
         self.decoder=decoder
         self.config=config
         self.register_buffer("bias", torch.tril(torch.ones(2048, 2048)))

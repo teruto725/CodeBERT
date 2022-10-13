@@ -70,7 +70,7 @@ def read_examples(filename):
             code=' '.join(code.strip().split())
             nl=' '.join(js['docstring_tokens']).replace('\n','')
             nl=' '.join(nl.strip().split())            
-            examples.append(
+            examples.append( # ここがexampleっぽい
                 Example(
                         idx = idx,
                         source=code,
